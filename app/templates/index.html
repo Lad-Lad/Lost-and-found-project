@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}! Post a New Item</h1>
+    <form action="" method="post" enctype="multipart/form-data"> {# Add enctype for file uploads #}
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.item_type.label }}<br>
+            {{ form.item_type() }}<br>
+            {% for error in form.item_type.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(size=60) }}<br>
+            {% for error in form.title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(cols=80, rows=6) }}<br>
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.location.label }}<br>
+            {{ form.location(size=60) }}<br>
+            {% for error in form.location.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.contact_info.label }}<br>
+            {{ form.contact_info(size=60) }}<br>
+            {% for error in form.contact_info.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.image.label }}<br>
+            {{ form.image() }}<br>
+            {% for error in form.image.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    <hr>
+    <h2>Recent Items</h2>
+    {% for item in items %} {# Loop through items, not posts #}
+        {% include '_item.html' %} {# Include the new item partial #}
+    {% endfor %}
+    {% if prev_url %}
+    <a href="{{ prev_url }}">Newer Items</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">Older Items</a>
+    {% endif %}
+{% endblock %}

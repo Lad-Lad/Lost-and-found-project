@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Browse All Lost & Found Items</h1>
+
+    <form action="{{ url_for('browse') }}" method="post">
+        {{ search_form.hidden_tag() }}
+        <p>
+            {{ search_form.search_query.label }}<br>
+            {{ search_form.search_query(size=50, value=current_search_query) }}
+            {{ search_form.submit() }}
+        </p>
+    </form>
+
+    {% if current_search_query %}
+    <h2>Showing results for "{{ current_search_query }}"</h2>
+    {% endif %}
+
+    {% if items %}
+        {% for item in items %}
+            {% include '_item.html' %}
+        {% endfor %}
+    {% else %}
+        <p>No items found matching your criteria.</p>
+    {% endif %}
+
+    {% if prev_url %}
+    <a href="{{ prev_url }}">Newer Items</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">Older Items</a>
+    {% endif %}
+{% endblock %}
