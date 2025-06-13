@@ -6,7 +6,7 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, \
 from flask_wtf.file import FileAllowed, FileRequired
 import sqlalchemy as sa
 from app import db
-from app.models import User, LostFoundItem 
+from app.models import User, LostFoundItem
 
 
 class LoginForm(FlaskForm):
@@ -43,16 +43,16 @@ class ResetPasswordRequestForm(FlaskForm):
 
 
 class ResetPasswordForm(FlaskForm):
-    password = PasswordField('New Password', validators=[DataRequired()]) # Changed label
+    password = PasswordField('New Password', validators=[DataRequired()]) 
     password2 = PasswordField(
-        'Repeat New Password', validators=[DataRequired(), EqualTo('password')]) # Changed label
-    submit = SubmitField('Reset Password') 
+        'Repeat New Password', validators=[DataRequired(), EqualTo('password')]) 
+    submit = SubmitField('Reset Password')
 
 
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
-    submit = SubmitField('Update Profile') 
+    submit = SubmitField('Update Profile')
 
     def __init__(self, original_username, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -72,7 +72,7 @@ class EmptyForm(FlaskForm):
 class LostFoundItemForm(FlaskForm):
     item_type = SelectField('Type', choices=[('found', 'Found Item'), ('lost', 'Lost Item')], validators=[DataRequired()])
     title = StringField('Item Title (e.g., "Blue Backpack", "Keys with Red Lanyard")', validators=[DataRequired(), Length(min=1, max=100)])
-    description = TextAreaField('Detailed Description', validators=[DataRequired(), Length(min=1, max=500)])
+    description = TextAreaField('Detailed Description', validators=[DataRequired(), Length(min=50, max=500)])
     location = StringField('Location (where found/lost, e.g., "Library 2nd floor", "Cafeteria")', validators=[Optional(), Length(max=140)])
     contact_info = StringField('Your Preferred Contact Info (e.g., Email, Phone Number, Instagram Handle)', validators=[Optional(), Length(max=140)])
     image = FileField('Upload Image (Optional)', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif'], 'Images only!')])
