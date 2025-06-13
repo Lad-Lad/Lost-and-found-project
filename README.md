@@ -40,6 +40,7 @@ bash
 Copy
 Edit
 pip install flask flask-wtf flask-sqlalchemy flask-migrate flask-login email-validator pyjwt flask-mail
+and also pip install flask_moment
 📄 3. Optional: Create .flaskenv
 bash
 Copy

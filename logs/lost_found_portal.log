@@ -41,3 +41,9 @@ Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
     raise TemplateNotFound(template)
 jinja2.exceptions.TemplateNotFound: email/item_confirmation.txt
+2025-06-13 13:06:12,171 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
+2025-06-13 13:11:47,636 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
+2025-06-13 13:11:58,122 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
+2025-06-13 13:12:09,752 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
+2025-06-13 13:12:18,127 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
+2025-06-13 13:12:24,354 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
