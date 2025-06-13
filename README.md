@@ -1,32 +1,29 @@
- Campus Lost & Found Board — 
- Purpose:
-A digital platform for University of Something students and staff to report, find, and manage lost or found items on campus.
+Client:
+Campus counseling Office at University of something
+Client Background:
+The Campus Life Office manages student wellbeing and events on campus. They’ve received complaints about lost items and want a centralized, digital solution to reduce lost item confusion.
+Client Problem:
+Students and staff frequently lose or find items on campus, but there’s no official online bulletin board to report or view them. The only methods now are sticky notes on walls or scattered social media posts.
+Client Goals:
+Allow users to post details and photos of lost or found items.
 
- Client:
-Campus Life Office (University of Something)
-They handle student wellbeing/events and want a centralized way to deal with lost items.
 
- Problem:
-No official lost & found system.
+Differentiate posts clearly between "Lost" and "Found".
 
-Students rely on sticky notes and scattered social media posts.
 
-Leads to confusion and low item recovery rates.
+Include optional fields like location.
 
-Goals & Features:
- Users can post Lost or Found items.
 
- Include description, optional image, and location.
+Enable users to manage (edit/delete) their own posts.
 
-Confirmation email sent after posting.
 
- Browse, filter by Lost/Found, and view post details.
+Send confirmation emails when posts are submitted.
 
- Logged-in users can comment, edit, or delete their own posts.
 
- Only registered users can post or comment.
+Support image uploads for better item identification.
 
-👀 Guests can browse posts only.
+
+Allow only registered users to post or comment.
 
 ⚙️ Setup Instructions:
 🐍 1. Create & Activate Virtual Environment
@@ -55,3 +52,4 @@ flask db migrate -m "Initial migration"
 flask db migrate -m "Transform to Lost & Found, add item fields"
 flask db upgrade
 6. flask run
+The Campus Lost & Found Board allows registered users at the University of Something to report and search for lost or found items. Users can create posts by selecting "Lost" or "Found," adding a description, uploading an optional image, and specifying the location. Each submission triggers a confirmation email. Logged-in users can comment on posts, as well as edit or delete their own. All users can browse and filter posts by type, while guests must sign up or log in to contribute. The platform streamlines item recovery and replaces outdated methods like sticky notes and random social media posts.
