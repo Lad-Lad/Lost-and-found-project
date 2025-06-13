@@ -1,4 +1,4 @@
-2025-06-06 12:41:32,817 ERROR: Exception on /index [POST] [in /Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py:875]
+2025-06-04 14:07:13,318 ERROR: Exception on /index [POST] [in /Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -15,9 +15,10 @@ Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/lhamann2024/Downloads/project/app/routes.py", line 57, in index
-    send_item_confirmation_email(current_user, item)
-  File "/Users/lhamann2024/Downloads/project/app/email.py", line 34, in send_item_confirmation_email
+  File "/Users/lhamann2024/Downloads/microbloggg/app/routes.py", line 60, in index
+    send_item_confirmation_email(current_user, item) # Send confirmation email
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lhamann2024/Downloads/microbloggg/app/email.py", line 34, in send_item_confirmation_email
     text_body=render_template('email/item_confirmation.txt',
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/templating.py", line 149, in render_template
@@ -41,7 +42,7 @@ Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
     raise TemplateNotFound(template)
 jinja2.exceptions.TemplateNotFound: email/item_confirmation.txt
-2025-06-06 12:53:56,505 ERROR: Exception on /index [POST] [in /Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py:875]
+2025-06-04 14:10:59,179 ERROR: Exception on /index [POST] [in /Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -58,9 +59,10 @@ Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/lhamann2024/Downloads/project/app/routes.py", line 57, in index
-    send_item_confirmation_email(current_user, item)
-  File "/Users/lhamann2024/Downloads/project/app/email.py", line 34, in send_item_confirmation_email
+  File "/Users/lhamann2024/Downloads/microbloggg/app/routes.py", line 60, in index
+    send_item_confirmation_email(current_user, item) # Send confirmation email
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lhamann2024/Downloads/microbloggg/app/email.py", line 34, in send_item_confirmation_email
     text_body=render_template('email/item_confirmation.txt',
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/templating.py", line 149, in render_template

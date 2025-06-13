@@ -1,12 +1,4 @@
-2025-06-04 13:56:03,803 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/microbloggg/app/__init__.py:50]
-2025-06-04 13:56:03,824 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/microbloggg/app/__init__.py:50]
-2025-06-04 13:56:03,824 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/microbloggg/app/__init__.py:50]
-2025-06-04 14:00:24,447 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/microbloggg/app/__init__.py:50]
-2025-06-04 14:00:31,025 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/microbloggg/app/__init__.py:50]
-2025-06-04 14:01:10,655 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/microbloggg/app/__init__.py:50]
-2025-06-04 14:01:18,773 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/microbloggg/app/__init__.py:50]
-2025-06-04 14:02:01,812 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/microbloggg/app/__init__.py:50]
-2025-06-04 14:02:41,597 ERROR: Exception on / [POST] [in /Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py:875]
+2025-06-06 11:57:38,833 ERROR: Exception on /index [POST] [in /Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -23,10 +15,9 @@ Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/lhamann2024/Downloads/microbloggg/app/routes.py", line 60, in index
-    send_item_confirmation_email(current_user, item) # Send confirmation email
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/lhamann2024/Downloads/microbloggg/app/email.py", line 34, in send_item_confirmation_email
+  File "/Users/lhamann2024/Downloads/project/app/routes.py", line 57, in index
+    send_item_confirmation_email(current_user, item)
+  File "/Users/lhamann2024/Downloads/project/app/email.py", line 34, in send_item_confirmation_email
     text_body=render_template('email/item_confirmation.txt',
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/templating.py", line 149, in render_template
@@ -50,7 +41,7 @@ Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/templating.py", line 99, in _get_source_fast
     raise TemplateNotFound(template)
 jinja2.exceptions.TemplateNotFound: email/item_confirmation.txt
-2025-06-04 14:05:32,495 ERROR: Exception on /index [POST] [in /Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py:875]
+2025-06-06 12:00:52,724 ERROR: Exception on /index [POST] [in /Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -67,10 +58,9 @@ Traceback (most recent call last):
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/lhamann2024/Downloads/microbloggg/app/routes.py", line 60, in index
-    send_item_confirmation_email(current_user, item) # Send confirmation email
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/lhamann2024/Downloads/microbloggg/app/email.py", line 34, in send_item_confirmation_email
+  File "/Users/lhamann2024/Downloads/project/app/routes.py", line 57, in index
+    send_item_confirmation_email(current_user, item)
+  File "/Users/lhamann2024/Downloads/project/app/email.py", line 34, in send_item_confirmation_email
     text_body=render_template('email/item_confirmation.txt',
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/Users/lhamann2024/Downloads/microblogg/venv/lib/python3.12/site-packages/flask/templating.py", line 149, in render_template

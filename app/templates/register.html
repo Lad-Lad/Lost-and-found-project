@@ -1,37 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Register</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=64) }}<br>
-            {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password2.label }}<br>
-            {{ form.password2(size=32) }}<br>
-            {% for error in form.password2.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+    <h1 style="text-align: center; font-size: 2rem; font-weight: bold; color: #1f2937; margin-bottom: 1.5rem;">Register</h1>
+    <div style="max-width: 32rem; margin-left: auto; margin-right: auto; background-color: #ffffff; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);">
+        <form action="" method="post" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.username.label(style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151;") }}
+                {{ form.username(style="margin-top: 0.25rem;") }}
+                {% for error in form.username.errors %}
+                <span class="error-message">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.email.label(style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151;") }}
+                {{ form.email(style="margin-top: 0.25rem;") }}
+                {% for error in form.email.errors %}
+                <span class="error-message">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.password.label(style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151;") }}
+                {{ form.password(style="margin-top: 0.25rem;") }}
+                {% for error in form.password.errors %}
+                <span class="error-message">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.password2.label(style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151;") }}
+                {{ form.password2(style="margin-top: 0.25rem;") }}
+                {% for error in form.password2.errors %}
+                <span class="error-message">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.submit(style="width: 100%;") }}
+            </div>
+        </form>
+    </div>
 {% endblock %}

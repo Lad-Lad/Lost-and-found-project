@@ -1,29 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
-    <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
-    <p>
-        Forgot Your Password?
-        <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
-    </p>
+   <h1 style="text-align: center; font-size: 2rem; font-weight: bold; color: #1f2937; margin-bottom: 1.5rem;">Sign In</h1>
+   <div style="max-width: 32rem; margin-left: auto; margin-right: auto; background-color: #ffffff; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);">
+       <form action="" method="post" novalidate style="display: flex; flex-direction: column; gap: 1.5rem;">
+           {{ form.hidden_tag() }}
+           <div>
+               {{ form.username.label(style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151;") }}
+               {{ form.username(style="margin-top: 0.25rem;") }}
+               {% for error in form.username.errors %}
+               <span class="error-message">[{{ error }}]</span>
+               {% endfor %}
+           </div>
+           <div>
+               {{ form.password.label(style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151;") }}
+               {{ form.password(style="margin-top: 0.25rem;") }}
+               {% for error in form.password.errors %}
+               <span class="error-message">[{{ error }}]</span>
+               {% endfor %}
+           </div>
+           <div style="display: flex; align-items: center; margin-top: 0.5rem;">
+               {{ form.remember_me(style="margin-right: 0.5rem;") }} <label for="{{ form.remember_me.id }}" style="display: inline; margin-bottom: 0;">{{ form.remember_me.label }}</label>
+           </div>
+           <div>
+               {{ form.submit(style="width: 100%;") }}
+           </div>
+       </form>
+       <p style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem;">New User? <a href="{{ url_for('register') }}" style="color: #2563eb; text-decoration: none;">Click to Register!</a></p>
+       <p style="text-align: center; margin-top: 0.5rem; font-size: 0.875rem;">
+           Forgot Your Password?
+           <a href="{{ url_for('reset_password_request') }}" style="color: #2563eb; text-decoration: none;">Click to Reset It</a>
+       </p>
+   </div>
 {% endblock %}

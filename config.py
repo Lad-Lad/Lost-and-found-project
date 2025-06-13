@@ -10,10 +10,9 @@ class Config:
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = ['your-email@example.com'] # IMPORTANT: Change this to a real email for testing
-    POSTS_PER_PAGE = 25 # Rename this to ITEMS_PER_PAGE or similar if you prefer
+    ADMINS = ['lhamann2024@ash.nl'] 
+    POSTS_PER_PAGE = 25 
 
-    # New: Image Uploads
     UPLOAD_FOLDER = os.path.join(basedir, 'app/static/uploads')
-    MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16 MB max file size
+    MAX_CONTENT_LENGTH = 16 * 1024 * 1024 
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}

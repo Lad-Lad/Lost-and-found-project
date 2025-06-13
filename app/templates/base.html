@@ -1,85 +1,357 @@
 <!doctype html>
-<html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - Campus Lost & Found</title>
-        {% else %}
-        <title>Welcome to Campus Lost & Found</title>
-        {% endif %}
-        <style>
-            /* Basic styles for flash messages - you can expand on this */
-            .flash {
-                padding: 10px;
-                margin-bottom: 10px;
-                border: 1px solid;
-                border-radius: 4px;
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>{{ title }} - Campus Lost & Found</title>
+    {% else %}
+    <title>Welcome to Campus Lost & Found</title>
+    {% endif %}
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #1f2937; 
+            min-height: 100vh; 
+            display: flex;
+            flex-direction: column; 
+            margin: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; 
+        }
+
+        nav {
+            background-color: #ffffff; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); 
+            padding: 1rem 1.5rem; 
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap; 
+        }
+        @media (min-width: 768px) { 
+            nav {
+                flex-direction: row; 
+                padding: 1rem 2rem;
             }
-            .flash.success {
-                background-color: #d4edda;
-                border-color: #c3e6cb;
-                color: #155724;
+        }
+
+        nav h1 {
+            font-size: 1.5rem; 
+            font-weight: bold;
+            color: #1f2937; 
+            margin-bottom: 1rem; 
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            nav h1 {
+                font-size: 1.75rem;
+                margin-bottom: 0;
             }
-            .flash.info {
-                background-color: #d1ecf1;
-                border-color: #bee5eb;
-                color: #0c5460;
+        }
+
+        nav h1 a {
+            text-decoration: none;
+            color: inherit; 
+            transition: color 0.15s ease-in-out; 
+        }
+        nav h1 a:hover {
+            color: #2563eb; 
+        }
+
+        nav div { 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem; 
+            font-size: 1.125rem; 
+        }
+        nav a {
+            text-decoration: none;
+            color: #4b5563; 
+            font-weight: 500; 
+            transition: color 0.15s ease-in-out;
+        }
+        nav a:hover {
+            color: #2563eb; 
+            text-decoration: underline; 
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e5e7eb; 
+            margin: 2.5rem auto; 
+            width: 80%; 
+        }
+
+        .flash {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid;
+            border-radius: 0.5rem; 
+            font-weight: 500; 
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        .flash.success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .flash.info {
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+            color: #0c5460;
+        }
+        .flash.warning {
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+            color: #856404;
+        }
+        .flash.danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .container {
+            max-width: 960px; 
+            margin: 1.5rem auto; 
+            padding: 1.5rem; 
+            flex-grow: 1; 
+        }
+        @media (min-width: 768px) {
+            .container {
+                padding: 2rem;
             }
-            .flash.warning {
-                background-color: #fff3cd;
-                border-color: #ffeeba;
-                color: #856404;
+        }
+
+        .item-card {
+            background-color: #ffffff; 
+            border: 1px solid #e5e7eb; 
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.2s ease-in-out; 
+            display: flex; 
+            flex-direction: column;
+            gap: 0.75rem; 
+        }
+        .item-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+        }
+        .item-card h3 {
+            margin-top: 0;
+            color: #1f2937; 
+            font-size: 1.5rem; 
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .item-card p {
+            margin-bottom: 0.5rem;
+            color: #374151; 
+        }
+        .item-card strong {
+            font-weight: 600; 
+        }
+        .item-card img {
+            max-width: 100%;
+            height: 200px; 
+            display: block;
+            margin-top: 0.75rem; 
+            border-radius: 0.25rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+            object-fit: cover; 
+            width: 100%; 
+        }
+        .item-card .meta-info { 
+            display: flex;
+            justify-content: space-between; 
+            align-items: flex-start;
+            font-size: 0.875rem; 
+            color: #6b7280; 
+            margin-bottom: 0.5rem; 
+        }
+        .item-card .meta-info .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .item-card .meta-info .type-indicator {
+            padding: 0.5rem;
+            border-radius: 9999px; 
+            font-size: 1.25rem; 
+        }
+
+        .item-card .meta-info a {
+            color: #2563eb; 
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .item-card .meta-info a:hover {
+            text-decoration: underline;
+        }
+        .item-card .type-lost {
+            color: #ef4444; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em; 
+            font-size: 1rem; 
+            background-color: #fef2f2; 
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+        }
+        .item-card .type-found {
+            color: #10b981; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 1rem;
+            background-color: #ecfdf5; 
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+        }
+        .item-card .item-actions { 
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end; 
+        }
+        .item-card .item-actions a,
+        .item-card .item-actions button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem; 
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+            cursor: pointer; 
+        }
+        .item-card .item-actions a { 
+            background-color: #e5e7eb;
+            color: #4b5563; 
+        }
+        .item-card .item-actions a:hover {
+            background-color: #d1d5db; 
+        }
+        .item-card .item-actions .delete-button { 
+            background-color: #ef4444; 
+            color: #ffffff; 
+            border: none; 
+        }
+        .item-card .item-actions .delete-button:hover {
+            background-color: #dc2626; 
+        }
+
+        footer {
+            background-color: #1f2937; 
+            color: #d1d5db; 
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.875rem; 
+            box-shadow: inset 0 4px 6px -1px rgba(0, 0, 0, 0.1), inset 0 2px 4px -2px rgba(0, 0, 0, 0.1); 
+            margin-top: auto; 
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="file"],
+        textarea,
+        select {
+            display: block;
+            width: 100%;
+            padding: 0.625rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: #1f2937;
+            background-color: #ffffff;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="email"]:focus,
+        input[type="file"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #2563eb; 
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); 
+        }
+        input::placeholder, textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        input[type="submit"],
+        button[type="submit"] {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid transparent;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #2563eb; 
+            cursor: pointer;
+            transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            width: auto; 
+        }
+        input[type="submit"]:hover,
+        button[type="submit"]:hover {
+            background-color: #1e40af; 
+        }
+        input[type="submit"]:focus,
+        button[type="submit"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .error-message {
+            color: #ef4444; 
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 2rem; 
+        }
+        @media (min-width: 768px) {
+            .grid-layout {
+                grid-template-columns: repeat(2, 1fr); 
             }
-            .flash.danger {
-                background-color: #f8d7da;
-                border-color: #f5c6cb;
-                color: #721c24;
+        }
+        @media (min-width: 1024px) {
+            .grid-layout {
+                grid-template-columns: repeat(3, 1fr); 
             }
-            .item-card {
-                border: 1px solid #ddd;
-                padding: 15px;
-                margin-bottom: 20px;
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .item-card h3 {
-                margin-top: 0;
-                color: #333;
-            }
-            .item-card p {
-                margin-bottom: 5px;
-            }
-            .item-card img {
-                max-width: 100%;
-                height: auto;
-                display: block;
-                margin-top: 10px;
-                border-radius: 4px;
-            }
-            .item-card .meta {
-                font-size: 0.85em;
-                color: #666;
-            }
-            .item-card .type-lost {
-                color: red;
-                font-weight: bold;
-            }
-            .item-card .type-found {
-                color: green;
-                font-weight: bold;
-            }
-            nav a {
-                margin-right: 15px;
-                text-decoration: none;
-                color: #007bff;
-            }
-            nav a:hover {
-                text-decoration: underline;
-            }
-        </style>
-    </head>
-    <body>
-        <nav>
-            <h1>Campus Lost & Found Portal</h1>
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1><a href="{{ url_for('index') }}">Campus Lost & Found Portal</a></h1>
+        <div>
             <a href="{{ url_for('index') }}">Submit Item</a>
             <a href="{{ url_for('browse') }}">Browse Items</a>
             {% if current_user.is_anonymous %}
@@ -88,17 +360,26 @@
             <a href="{{ url_for('user', username=current_user.username) }}">My Items</a>
             <a href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
-        </nav>
-        <hr>
+        </div>
+    </nav>
+    <hr>
+    <div class="container">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-        <ul>
-            {% for category, message in messages %}
-            <li class="flash {{ category }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
+        <div class="flash-messages-container">
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                {% for category, message in messages %}
+                <li class="flash {{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
         {% endif %}
         {% endwith %}
         {% block content %}{% endblock %}
-    </body>
+    </div>
+    <footer>
+        <p>&copy; {{ moment(g.current_time).format('YYYY') }} Campus Lost & Found Portal. All rights reserved.</p>
+        <p class="mt-2">Designed for the University of Something Campus Life Office</p>
+    </footer>
+</body>
 </html>
