@@ -53,3 +53,5 @@ jinja2.exceptions.TemplateNotFound: email/item_confirmation.txt
 2025-06-13 13:29:27,833 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
 2025-06-13 13:29:32,963 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
 2025-06-13 13:38:31,532 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
+2025-06-14 15:47:04,647 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
+2025-06-14 15:49:17,643 INFO: Campus Lost & Found Portal startup [in /Users/lhamann2024/Downloads/projectt/app/__init__.py:53]
